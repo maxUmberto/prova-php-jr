@@ -19,18 +19,20 @@ Você deve utilizar o seguinte stack:
 ## Escopo       
 Crie uma interface(página na web) onde você consiga, CADASTRAR, ALTERAR e EXCLUIR um usuário, você tem que salvar esses dados no banco de dados.
 
-Campos:
 
-  Usuário
-     Nome
-     CPF
-     Data Nascimento
-     Email
-     Tefone
-     Endereço
-     Cidade
-     Estado
-     Role
+
+### Tabela de Usuário
+
+| Nome do Campo  | Tipos Permitidos |
+|----------------|------------------|
+| Nome           | letras           |
+| CPF            | numero           |
+| DataNascimento | data             |
+| Telefone       | numero           |
+| Endereço       | letras e numeros |
+| Estado         | letras           |
+| Role           | letras           |
+| Cidade         | Letras           |
 
 * DIFERENCIAL ( não precisa fazer se quiser ): Pesquisa por nome ou CPF
 * DIFERENCIAL ( alguns testes de unidade )
