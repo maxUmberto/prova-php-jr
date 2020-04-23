@@ -17,22 +17,20 @@ Você deve utilizar o seguinte stack:
 
 
 ## Escopo       
------------------------
-Crie uma interface(página na web) onde você consiga, CADASTRAR, ALTERAR e EXCLUIR um usuário, você tem que salvar esses
-dados no banco de dados.
+Crie uma interface(página na web) onde você consiga, CADASTRAR, ALTERAR e EXCLUIR um usuário, você tem que salvar esses dados no banco de dados.
 
 Campos:
 
-Usuário
-    Nome
-    CPF
-    Data Nascimento
-    Email
-    Tefone
-    Endereço
-    Cidade
-    Estado
-    Role
+  Usuário
+     Nome
+     CPF
+     Data Nascimento
+     Email
+     Tefone
+     Endereço
+     Cidade
+     Estado
+     Role
 
 &leftarrow; DIFERENCIAL ( não precisa fazer se quiser ): Pesquisa por nome ou CPF
 &leftarrow; DIFERENCIAL ( alguns testes de unidade )
@@ -42,11 +40,9 @@ Usuário
 PS.: Faça os diferenciais apenas se já tiver conhecimento do assunto, não precisa tentar fazer se não tiver. A vaga é de júnior, não esperamos que conheçam todos os pontos mencionados.
 
 ## Banco de dados
------------------------ 
 As credenciais para o banco de dados irá ser enviada pelo RH. Esse banco será apagado no fim do processo seletivo, por favor não repasse essa credencial.
 
 ## Informações adicionais:
------------------------
 
 1) Faça da forma em que se sentir melhor, deixe sua imaginação fluir...
 2) Não se preocupe com design. Apenas com a qualidade do seu código
@@ -59,11 +55,11 @@ O que avaliamos
     Lógica de programação
     Conceitos de orientação a objetos
     Otimização do código implementado
-    Organização e padrão de Commits
+    Organização e padrão de Commits 
+    Os tipos escolhidos para a tabela no banco de dados
 
 
 ## Dúvidas
------------------------
-    Fique a vontade para nos procurar, o RH vai mandar o contato para dúvidas
-    Nos diga o que achou do teste
+Fique a vontade para nos procurar, o RH vai mandar o contato para dúvidas
+Nos diga o que achou do teste
 
