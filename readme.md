@@ -34,10 +34,11 @@ Crie uma interface(página na web) onde você consiga, CADASTRAR, ALTERAR e EXCL
 | Role           | letras           |
 | Cidade         | Letras           |
 
-* DIFERENCIAL ( não precisa fazer se quiser ): Pesquisa por nome ou CPF
-* DIFERENCIAL ( alguns testes de unidade )
-* DIFERENCIAL ( poder associar multiplos roles ao usuario)
-* DIFERENCIAL ( dockerfile)
+### Diferenciais (não precisa fazer se não quiser, e principalmente se acharem demorado!)
+* Pesquisa por nome ou CPF
+* Alguns testes de unidade
+* Poder associar multiplos roles ao usuario
+* dockerfile
 
 PS.: Faça os diferenciais apenas se já tiver conhecimento do assunto, não precisa tentar fazer se não tiver. A vaga é de júnior, não esperamos que conheçam todos os pontos mencionados.
 
