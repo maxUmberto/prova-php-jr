@@ -32,10 +32,10 @@ Campos:
      Estado
      Role
 
-&leftarrow; DIFERENCIAL ( não precisa fazer se quiser ): Pesquisa por nome ou CPF
-&leftarrow; DIFERENCIAL ( alguns testes de unidade )
-&leftarrow; DIFERENCIAL ( poder associar multiplos roles ao usuario)
-&leftarrow; DIFERENCIAL ( dockerfile)
+* DIFERENCIAL ( não precisa fazer se quiser ): Pesquisa por nome ou CPF
+* DIFERENCIAL ( alguns testes de unidade )
+* DIFERENCIAL ( poder associar multiplos roles ao usuario)
+* DIFERENCIAL ( dockerfile)
 
 PS.: Faça os diferenciais apenas se já tiver conhecimento do assunto, não precisa tentar fazer se não tiver. A vaga é de júnior, não esperamos que conheçam todos os pontos mencionados.
 
@@ -49,14 +49,14 @@ As credenciais para o banco de dados irá ser enviada pelo RH. Esse banco será 
 
 O que avaliamos
 
-    Qualidade de código
-    Código limpo
-    Simplicidade
-    Lógica de programação
-    Conceitos de orientação a objetos
-    Otimização do código implementado
-    Organização e padrão de Commits 
-    Os tipos escolhidos para a tabela no banco de dados
+* Qualidade de código
+* Código limpo
+* Simplicidade
+* Lógica de programação
+* Conceitos de orientação a objetos
+* Otimização do código implementado
+* Organização e padrão de Commits 
+* Os tipos escolhidos para a tabela no banco de dados
 
 
 ## Dúvidas
