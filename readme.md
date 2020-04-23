@@ -1,7 +1,7 @@
 
-Teste prático - Dev PHP Junior
+#Teste prático - Dev PHP Junior
 
-Introdução
+##Introdução
 
 Este é um teste que aplicamos na seleção de novos desenvolvedores junior.
 
@@ -16,9 +16,8 @@ Você deve utilizar o seguinte stack:
     Banco de Dados (Mysql)
 
 
-# ----------------------- #
-#       Desenvolver       #
-# ----------------------- #
+##Escopo       
+-----------------------
 -> Crie uma interface(página na web) onde você consiga, CADASTRAR, ALTERAR e EXCLUIR um usuário, você tem que salvar esses
 dados no banco de dados.
 
@@ -42,14 +41,13 @@ Usuário
 
 PS.: Faça os diferenciais apenas se já tiver conhecimento do assunto, não precisa tentar fazer se não tiver. A vaga é de júnior, não esperamos que conheçam todos os pontos mencionados.
 
-# ----------------------- #
-#     Banco de dados      #
-# ----------------------- #
+##Banco de dados
+----------------------- 
 As credenciais para o banco de dados irá ser enviada pelo RH. Esse banco será apagado no fim do processo seletivo, por favor não repasse essa credencial.
 
-# ----------------------- #
-# Informações adicionais: #
-# ----------------------- #
+##Informações adicionais:
+-----------------------
+
 1) Faça da forma em que se sentir melhor, deixe sua imaginação fluir...
 2) Não se preocupe com design. Apenas com a qualidade do seu código
 
@@ -64,9 +62,8 @@ O que avaliamos
     Organização e padrão de Commits
 
 
-# ----------------------- #
-#         Dúvidas         #
-# ----------------------- #
+##Dúvidas
+-----------------------
     Fique a vontade para nos procurar, o RH vai mandar o contato para dúvidas
     Nos diga o que achou do teste
 
