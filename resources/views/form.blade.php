@@ -131,6 +131,7 @@
                             </select>
                         </div>
                         <div class="form-group col-md-6 col-xs-12 text-center mt-5">
+                            <a href="{{url('/')}}" class="btn btn-lg btn-outline-info text-center"><i class="fas fa-arrow-left"></i> Voltar</a>
                             <button type="submit" class="btn btn-lg btn-outline-success text-center"><i class="fas fa-plus"></i> Cadastrar</button>
                         </div>
                     </div>
