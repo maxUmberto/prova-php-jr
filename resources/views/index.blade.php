@@ -26,42 +26,54 @@
                         </form>
                     </div> <!-- End Col-9 -->
                     <div class="col-md-3 col-xs-12">
-                        <a href="{{ url('/new') }}" class="btn btn-outline-success"><i class="fas fa-plus"></i> Cadastrar Novo</a>
+                        <a href="{{ url('users/create') }}" class="btn btn-outline-success"><i class="fas fa-plus"></i> Cadastrar Novo</a>
                     </div>
                 </div> <!-- End Row -->
             </div><!-- End col-8 -->
         </div><!-- Enf Row -->
 
         <!-- Cards with users informations -->
-        <div class="row mb-2">
+        @foreach($users as $user)
+            @php
+                //Get roles to the current user
+                $roles = $user->find($user->id)->relRole;
+            @endphp
+            <div class="row mb-2">
             <div class="offset-2"></div>
             <div class="card col-8">
                 <div class="card-body">
-                    <span class="card-title h4">Max Umberto Santos</span> <smal class="text-muted">(Administrador)</smal>
+                    <span class="card-title h4">{{$user->name}}</span>
+                    <!-- In case the current user dont have any role -->
+                    @if(count($roles)!= 0)
+                        @if($roles[0]->client) <smal class="text-muted">(Cliente)</smal> @endif
+                        @if($roles[0]->employee) <smal class="text-muted">(Funcionário)</smal> @endif
+                        @if($roles[0]->admin) <smal class="text-muted">(Administrador)</smal> @endif
+                    @endif
                     <div class="row mt-2">
                         <div class="col">
-                            <bold>CPF:</bold> 09441254681
+                            <span class="font-weight-bold">CPF:</span> {{$user->cpf}}
                         </div>
                         <div class="col">
-                            <bold>Nascimento:</bold> 03/07/1997
+                            <span class="font-weight-bold">Nascimento:</span> {{ date('d/m/Y', strtotime($user->birthday)) }}
                         </div>
                         <div class="col">
-                            <bold>Telefone:</bold>(21)973052963
+                            <span class="font-weight-bold">Telefone:</span> {{$user->phone}}
                         </div>
                     </div>
                     <div class="row mt-1">
                         <div class="col">
-                            <bold>Endereço:</bold> Rua Itaboraí, n18 - Seropédica/RJ
+                            <span class="font-weight-bold">Endereço:</span> {{$user->address}} - {{$user->city}} / {{$user->uf}}
                         </div>
                     </div>
 
                     <!-- Action Buttons -->
                     <div class="float-right">
-                        <a href="#" class="btn btn-outline-primary" title="Editar"><i class="fas fa-edit"></i></a>
-                        <a href="#" class="btn btn-outline-danger" title="Excluir" data-toggle="modal" data-target="#modal1"><i class="fas fa-trash"></i></a>
+                        @csrf
+                        <a href="{{url("users/$user->id/edit")}}" class="btn btn-outline-primary" title="Editar"><i class="fas fa-edit"></i></a>
+                        <button class="btn btn-outline-danger" title="Excluir" data-toggle="modal" data-target="#modal{{$user->id}}"><i class="fas fa-trash"></i></button>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="modal{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -71,11 +83,11 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <p>Excluir Max Umberto Santos</p>
+                                        <p>{{$user->name}}</p>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-outline-info" data-dismiss="modal"><i class="fas fa-arrow-left"></i> Voltar</button>
-                                        <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Excluir</button>
+                                        <a href="{{url("/users/$user->id")}}" class="btn btn-danger" id="del-button"><i class="fas fa-trash-alt"></i> Excluir</a>
                                     </div>
                                 </div>
                             </div>
@@ -84,174 +96,7 @@
                 </div><!-- End Card Body -->
             </div><!-- End Card | End col-8 -->
         </div><!-- End Row -->
-        <div class="row mb-2">
-            <div class="offset-2"></div>
-            <div class="card col-8">
-                <div class="card-body">
-                    <span class="card-title h4">Max Umberto Santos</span> <smal class="text-muted">(Administrador)</smal>
-                    <div class="row mt-2">
-                        <div class="col">
-                            <bold>CPF:</bold> 09441254681
-                        </div>
-                        <div class="col">
-                            <bold>Nascimento:</bold> 03/07/1997
-                        </div>
-                        <div class="col">
-                            <bold>Telefone:</bold>(21)973052963
-                        </div>
-                    </div>
-                    <div class="row mt-1">
-                        <div class="col">
-                            <bold>Endereço:</bold> Rua Itaboraí, n18 - Seropédica/RJ
-                        </div>
-                    </div>
-                    <div class="float-right">
-                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                        <a href="#" class="btn btn-outline-danger"><i class="fas fa-trash"></i></a>
-                    </div>
-                </div><!-- End Card Body -->
-            </div><!-- End Card | End col-8 -->
-        </div><!-- End Row -->
-        <div class="row mb-2">
-            <div class="offset-2"></div>
-            <div class="card col-8">
-                <div class="card-body">
-                    <span class="card-title h4">Max Umberto Santos</span> <smal class="text-muted">(Administrador)</smal>
-                    <div class="row mt-2">
-                        <div class="col">
-                            <bold>CPF:</bold> 09441254681
-                        </div>
-                        <div class="col">
-                            <bold>Nascimento:</bold> 03/07/1997
-                        </div>
-                        <div class="col">
-                            <bold>Telefone:</bold>(21)973052963
-                        </div>
-                    </div>
-                    <div class="row mt-1">
-                        <div class="col">
-                            <bold>Endereço:</bold> Rua Itaboraí, n18 - Seropédica/RJ
-                        </div>
-                    </div>
-                    <div class="float-right">
-                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                        <a href="#" class="btn btn-outline-danger"><i class="fas fa-trash"></i></a>
-                    </div>
-                </div><!-- End Card Body -->
-            </div><!-- End Card | End col-8 -->
-        </div><!-- End Row -->
-        <div class="row mb-2">
-            <div class="offset-2"></div>
-            <div class="card col-8">
-                <div class="card-body">
-                    <span class="card-title h4">Max Umberto Santos</span> <smal class="text-muted">(Administrador)</smal>
-                    <div class="row mt-2">
-                        <div class="col">
-                            <bold>CPF:</bold> 09441254681
-                        </div>
-                        <div class="col">
-                            <bold>Nascimento:</bold> 03/07/1997
-                        </div>
-                        <div class="col">
-                            <bold>Telefone:</bold>(21)973052963
-                        </div>
-                    </div>
-                    <div class="row mt-1">
-                        <div class="col">
-                            <bold>Endereço:</bold> Rua Itaboraí, n18 - Seropédica/RJ
-                        </div>
-                    </div>
-                    <div class="float-right">
-                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                        <a href="#" class="btn btn-outline-danger"><i class="fas fa-trash"></i></a>
-                    </div>
-                </div><!-- End Card Body -->
-            </div><!-- End Card | End col-8 -->
-        </div><!-- End Row -->
-        <div class="row mb-2">
-            <div class="offset-2"></div>
-            <div class="card col-8">
-                <div class="card-body">
-                    <span class="card-title h4">Max Umberto Santos</span> <smal class="text-muted">(Administrador)</smal>
-                    <div class="row mt-2">
-                        <div class="col">
-                            <bold>CPF:</bold> 09441254681
-                        </div>
-                        <div class="col">
-                            <bold>Nascimento:</bold> 03/07/1997
-                        </div>
-                        <div class="col">
-                            <bold>Telefone:</bold>(21)973052963
-                        </div>
-                    </div>
-                    <div class="row mt-1">
-                        <div class="col">
-                            <bold>Endereço:</bold> Rua Itaboraí, n18 - Seropédica/RJ
-                        </div>
-                    </div>
-                    <div class="float-right">
-                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                        <a href="#" class="btn btn-outline-danger"><i class="fas fa-trash"></i></a>
-                    </div>
-                </div><!-- End Card Body -->
-            </div><!-- End Card | End col-8 -->
-        </div><!-- End Row -->
-        <div class="row mb-2">
-            <div class="offset-2"></div>
-            <div class="card col-8">
-                <div class="card-body">
-                    <span class="card-title h4">Max Umberto Santos</span> <smal class="text-muted">(Administrador)</smal>
-                    <div class="row mt-2">
-                        <div class="col">
-                            <bold>CPF:</bold> 09441254681
-                        </div>
-                        <div class="col">
-                            <bold>Nascimento:</bold> 03/07/1997
-                        </div>
-                        <div class="col">
-                            <bold>Telefone:</bold>(21)973052963
-                        </div>
-                    </div>
-                    <div class="row mt-1">
-                        <div class="col">
-                            <bold>Endereço:</bold> Rua Itaboraí, n18 - Seropédica/RJ
-                        </div>
-                    </div>
-                    <div class="float-right">
-                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                        <a href="#" class="btn btn-outline-danger"><i class="fas fa-trash"></i></a>
-                    </div>
-                </div><!-- End Card Body -->
-            </div><!-- End Card | End col-8 -->
-        </div><!-- End Row -->
-        <div class="row mb-2">
-            <div class="offset-2"></div>
-            <div class="card col-8">
-                <div class="card-body">
-                    <span class="card-title h4">Max Umberto Santos</span> <smal class="text-muted">(Administrador)</smal>
-                    <div class="row mt-2">
-                        <div class="col">
-                            <bold>CPF:</bold> 09441254681
-                        </div>
-                        <div class="col">
-                            <bold>Nascimento:</bold> 03/07/1997
-                        </div>
-                        <div class="col">
-                            <bold>Telefone:</bold>(21)973052963
-                        </div>
-                    </div>
-                    <div class="row mt-1">
-                        <div class="col">
-                            <bold>Endereço:</bold> Rua Itaboraí, n18 - Seropédica/RJ
-                        </div>
-                    </div>
-                    <div class="float-right">
-                        <a href="#" class="btn btn-outline-primary"><i class="fas fa-edit"></i></a>
-                        <a href="#" class="btn btn-outline-danger"><i class="fas fa-trash"></i></a>
-                    </div>
-                </div><!-- End Card Body -->
-            </div><!-- End Card | End col-8 -->
-        </div><!-- End Row -->
+        @endforeach
 
     </div>
 @endsection
