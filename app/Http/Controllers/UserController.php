@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use App\Models\Role;
 use App\User;
 
@@ -45,7 +46,7 @@ class UserController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $newUser = $this->objUser->create([
             'name' => $request->name,
@@ -106,7 +107,7 @@ class UserController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
         $user = $this->objUser->where(['id' => $id])->update([
             'name' => $request->name,
@@ -145,7 +146,7 @@ class UserController extends Controller
             return($delete) ? "Sim" : "Não";
     }
 
-    public function search(Request $request){
+    public function search(UserRequest $request){
         if($request->name != '' || $request->cpf != ''){
 //            dd($request->name);
             $users = $this->objUser->where([['name', 'LIKE', "%$request->name%"],['cpf', 'LIKE', "%$request->cpf%"]])->get();

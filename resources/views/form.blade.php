@@ -12,6 +12,14 @@
         <div class="row">
             <div class="offset-xs-0 offset-md-2"></div>
             <div class="col-xs-12 col-md-8 mb-3">
+                @if(isset($errors)  && count($errors) > 0)
+{{--                    {{dd($errors)}}--}}
+                    <div class="text-center mt-4 mb-4 p-2 alert-danger">
+                        @foreach($errors->all() as $error)
+                            {{$error}}<br>
+                        @endforeach
+                    </div>
+                @endif
                 @if(isset($user))
                     <form method="post" action="{{url("/users/$user->id")}}">
                         @method('PUT')
@@ -24,7 +32,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6 col-xs-12">
                             <label for="name">Nome</label>
-                            <input type="text" name="name" class="form-control" id="name" value="{{ $user->name ?? '' }}">
+                            <input type="text" name="name" class="form-control" id="name" value="{{ ($user->name ?? '') }}">
                         </div>
                         <div class="form-group col-md-6 col-xs-12">
                             <label for="cpf">CPF</label>
