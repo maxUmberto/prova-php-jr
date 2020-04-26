@@ -13,4 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/users/search', 'UserController@search');
 Route::resource('/users', 'UserController');

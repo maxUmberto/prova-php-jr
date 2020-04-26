@@ -145,6 +145,18 @@ class UserController extends Controller
             return($delete) ? "Sim" : "Não";
     }
 
+    public function search(Request $request){
+        if($request->name != '' || $request->cpf != ''){
+//            dd($request->name);
+            $users = $this->objUser->where([['name', 'LIKE', "%$request->name%"],['cpf', 'LIKE', "%$request->cpf%"]])->get();
+//            dd($users);
+            return view('index', compact('users'));
+        }
+        else{
+            return redirect('/users');
+        }
+    }
+
     private function defineRoles($requestRoles)
     {
         $roles = [
