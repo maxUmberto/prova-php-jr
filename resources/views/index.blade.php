@@ -46,6 +46,14 @@
         </div><!-- Enf Row -->
 
         <!-- Cards with users informations -->
+        @if(session()->has('success'))
+            <div class="row mb-2">
+                <div class="offset-xs-1 offset-md-2 offset-sm-1"></div>
+                <div class="col-xs-10 col-md-8 col-sm-10 text-center mt-4 mb-4 p-2 alert-success">
+                    {{ session('success') }}
+                </div>
+            </div>
+        @endif
         @foreach($users as $user)
             @php
                 //Get roles to the current user

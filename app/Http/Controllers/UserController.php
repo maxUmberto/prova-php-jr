@@ -21,7 +21,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = $this->objUser->paginate(5);
+        $users = $this->objUser->orderBy('updated_at', 'DESC')->paginate(5);
         return view('index', compact('users'));
     }
 
@@ -59,7 +59,7 @@ class UserController extends Controller
         }
 
         if ($newUser) {
-            return redirect('/users');
+            return redirect('/users')->withSuccess('Usuário cadastrado com sucesso');
         }
     }
 
@@ -104,13 +104,15 @@ class UserController extends Controller
         }
 
         if ($user) {
-            return redirect('/users');
+            return redirect('/users')->withSuccess('Usuário atualizado com sucesso');
         }
     }
 
     public function destroy($id)
     {
         $delete = $this->objUser->destroy($id);
+        session()->flash('success', 'Usuário excluído com sucesso');
+//            return($delete) ? "Sim" : "Não";
             return($delete) ? "Sim" : "Não";
     }
 
