@@ -32,6 +32,11 @@ class UserController extends Controller
 
     public function store(UserRequest $request)
     {
+        //Since we three fields in the birthday instead of using a datepicker, we need to check wheter the date is valid or note
+        //So we concate the birthday fields and add it to the rules to be checked
+        //But I didnt find a way to translate the message showed to the user, so its in english unfortunately
+        $this->dateIsValid($request);
+
         $newUser = $this->objUser->create([
             'name' => $request->name,
             'cpf' => $request->cpf,
@@ -73,6 +78,11 @@ class UserController extends Controller
 
     public function update(UserRequest $request, $id)
     {
+        //Since we three fields in the birthday instead of using a datepicker, we need to check wheter the date is valid or note
+        //So we concate the birthday fields and add it to the rules to be checked
+        //But I didnt find a way to translate the message showed to the user, so its in english unfortunately
+        $this->dateIsValid($request);
+
         $user = $this->objUser->where(['id' => $id])->update([
             'name' => $request->name,
             'cpf' => $request->cpf,
@@ -114,6 +124,15 @@ class UserController extends Controller
         else{
             return redirect('/users');
         }
+    }
+
+    private function dateIsValid($request){
+        $request->merge([
+            'birthday_date' => $request->year . '-' . $request->month . '-' . $request->day,
+        ]);
+        $this->validate($request, [
+            'birthday_date' => 'date',
+        ]);
     }
 
     private function defineRoles($requestRoles)

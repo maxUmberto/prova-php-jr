@@ -56,6 +56,8 @@ class UserRequest extends FormRequest
             'year.required' => 'O campo ano é obrigatório',
             'year.numeric' => 'Ano não selecionado',
 
+            'birthday_date' => 'A data inserida não é válida',
+
             'phone.required' => 'O telefone é obrigatório',
             'phone.numeric' => 'Digite somente números no telefone',
             'phone.digits_between' => 'Telefone com quantidade de caracteres inválidos',
