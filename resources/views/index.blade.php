@@ -14,15 +14,25 @@
                         <form method="get" action="{{url('/users/search')}}" class="">
                             <div class="form-row">
                                 <div class="col-md-4 col-sm-6 col-xs-12">
-                                    <input type="text" name="name" class="form-control mb-2 mr-sm-2" placeholder="Filtrar por nome">
+                                    <input type="text"
+                                           name="name"
+                                           class="form-control mb-2 mr-sm-2"
+                                           placeholder="Filtrar por nome">
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-12">
-                                    <input type="text" name="cpf" class="form-control mb-2 mr-sm-2" placeholder="Filtrar por CPF">
+                                    <input type="text"
+                                           name="cpf"
+                                           class="form-control mb-2 mr-sm-2"
+                                           placeholder="Filtrar por CPF">
                                 </div>
                                 <div class="col-md-4 col-xs-12 text-center" style="display: inline">
-                                    <button type="submit" class="btn btn-outline-info mb-2"><i class="fas fa-filter"></i> Filtrar</button>
+                                    <button type="submit" class="btn btn-outline-info mb-2">
+                                        <i class="fas fa-filter"></i> Filtrar
+                                    </button>
                                     <a href="{{ url('users/') }}">
-                                        <button type="submit" class="btn btn-outline-info mb-2"><i class="fas fa-eraser"></i> Limpar</button>
+                                        <button type="submit" class="btn btn-outline-info mb-2">
+                                            <i class="fas fa-eraser"></i> Limpar
+                                        </button>
                                     </a>
                                 </div>
                             </div>
@@ -32,7 +42,7 @@
                         <a href="{{ url('users/create') }}" class="btn btn-outline-success"><i class="fas fa-plus"></i> Cadastrar Novo</a>
                     </div>
                 </div> <!-- End Row -->
-            </div><!-- End col-8 -->
+            </div><!-- End col-md-8 -->
         </div><!-- Enf Row -->
 
         <!-- Cards with users informations -->
@@ -72,8 +82,12 @@
                     <!-- Action Buttons -->
                     <div class="float-right">
                         @csrf
-                        <a href="{{url("users/$user->id/edit")}}" class="btn btn-outline-primary" title="Editar"><i class="fas fa-edit"></i></a>
-                        <button class="btn btn-outline-danger" title="Excluir" data-toggle="modal" data-target="#modal{{$user->id}}"><i class="fas fa-trash"></i></button>
+                        <a href="{{url("users/$user->id/edit")}}" class="btn btn-outline-primary" title="Editar">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <button class="btn btn-outline-danger" title="Excluir" data-toggle="modal" data-target="#modal{{$user->id}}">
+                            <i class="fas fa-trash"></i>
+                        </button>
 
                         <!-- Modal -->
                         <div class="modal fade" id="modal{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -89,21 +103,28 @@
                                         <p>{{$user->name}}</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-outline-info" data-dismiss="modal"><i class="fas fa-arrow-left"></i> Voltar</button>
-                                        <a href="{{url("/users/$user->id")}}" class="btn btn-danger" id="del-button"><i class="fas fa-trash-alt"></i> Excluir</a>
+                                        <button type="button" class="btn btn-outline-info" data-dismiss="modal">
+                                            <i class="fas fa-arrow-left"></i> Voltar
+                                        </button>
+                                        <a href="{{url("/users/$user->id")}}" class="btn btn-danger" id="del-button">
+                                            <i class="fas fa-trash-alt"></i> Excluir
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </div><!-- End Modal Box -->
+                    </div><!-- End Action Buttons -->
                 </div><!-- End Card Body -->
             </div><!-- End Card | End col-8 -->
         </div><!-- End Row -->
         @endforeach
 
-        @if(count($users) >= 5)
-            {{ $users->links() }}
-        @endif
+        <div class="row mb-2">
+            <div class="offset-xs-1 offset-md-2 offset-sm-1"></div>
+            <div class="col-xs-10 col-md-8 col-sm-10 ">
+                {{ $users->links() }}
+            </div>
+        </div>
 
     </div>
 @endsection
