@@ -101,5 +101,9 @@
         </div><!-- End Row -->
         @endforeach
 
+        @if(count($users) >= 5)
+            {{ $users->links() }}
+        @endif
+
     </div>
 @endsection
