@@ -112,7 +112,6 @@ class UserController extends Controller
     {
         $delete = $this->objUser->destroy($id);
         session()->flash('success', 'Usuário excluído com sucesso');
-//            return($delete) ? "Sim" : "Não";
             return($delete) ? "Sim" : "Não";
     }
 

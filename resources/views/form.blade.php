@@ -37,7 +37,7 @@
                                    name="name"
                                    class="form-control"
                                    id="name"
-                                   value="{{ ($user->name ?? '') }}">
+                                   value="{{ (old('name') ? old('name') : ($user->name ?? '')) }}">
                         </div>
                         <div class="form-group col-md-6 col-xs-12">
                             <label for="cpf">CPF</label>
@@ -45,7 +45,7 @@
                                    name="cpf"
                                    class="form-control"
                                    id="cpf"
-                                   value="{{ $user->cpf ?? '' }}">
+                                   value="{{ (old('cpf') ? old('cpf') : ($user->cpf ?? '')) }}">
                         </div>
                     </div>
 
@@ -62,7 +62,13 @@
                                     <select class="custom-select" name="day">
                                         <option selected>Dia</option>
                                         @for($i = 1; $i<32; $i++)
-                                            <option value="{{ $i }}" {{ (isset($user) && $i == $birthday[2]) ? 'selected' : '' }}>
+                                            <!--
+                                            The ternary operator below may seen a bit confuse, so a quick explanation :
+                                            1) Check if this option was selected before and if true set it as the selected
+                                            2) In case this option wasnt selected we check if we are in the edit form
+                                                and if true we set selected to the option tha came from the db
+                                            -->
+                                            <option value="{{ $i }}" {{ (old('day') == $i) ? 'selected' : (isset($user) && $i == $birthday[2]) ? 'selected' : '' }}>
                                                 {{ $i }}
                                             </option>
                                         @endfor
@@ -88,7 +94,13 @@
                                             ]
                                         @endphp
                                         @foreach($months as $key => $month)
-                                            <option value="{{ $key }}" {{ (isset($user) && $key == $birthday[1]) ? 'selected' : '' }}>
+                                            <!--
+                                            The ternary operator below may seen a bit confuse, so a quick explanation :
+                                            1) Check if this option was selected before and if true set it as the selected
+                                            2) In case this option wasnt selected we check if we are in the edit form
+                                                and if true we set selected to the option tha came from the db
+                                            -->
+                                            <option value="{{ $key }}" {{ (old('month') == $key) ? 'selected' : (isset($user) && $key == $birthday[1]) ? 'selected' : '' }}>
                                                 {{ $month }}
                                             </option>
                                         @endforeach
@@ -98,7 +110,13 @@
                                     <select class="custom-select" name="year">
                                         <option selected>Ano</option>
                                         @for($i = date('Y'); $i>1900; $i--)
-                                            <option value="{{ $i }}" {{ (isset($user) && $i == $birthday[0]) ? 'selected' : '' }}>
+                                            <!--
+                                            The ternary operator below may seen a bit confuse, so a quick explanation :
+                                            1) Check if this option was selected before and if true set it as the selected
+                                            2) In case this option wasnt selected we check if we are in the edit form
+                                                and if true we set selected to the option tha came from the db
+                                            -->
+                                            <option value="{{ $i }}" {{ (old('year') == $i) ? 'selected' : (isset($user) && $i == $birthday[0]) ? 'selected' : '' }}>
                                                 {{ $i }}
                                             </option>
                                         @endfor
@@ -112,7 +130,7 @@
                                    name="phone"
                                    class="form-control"
                                    id="phone"
-                                   value="{{ $user->phone ?? '' }}">
+                                   value="{{ (old('phone') ? old('phone') : ($user->phone ?? '')) }}">
                         </div>
                     </div>
 
@@ -130,7 +148,12 @@
                                    name="address"
                                    class="form-control"
                                    id="address"
-                                   value="{{ (isset($user)) ? $address[0] : '' }}">
+                                    {{--I dont why, but the ternary operator wasnt working here, so I had to use an if..else stement--}}
+                                    @if(old('address'))
+                                        value="{{old('address')}}">
+                                    @else
+                                        value="{{ (isset($user)) ? $address[0] : '' }}">
+                                    @endif
                         </div>
                     </div>
 
@@ -142,7 +165,12 @@
                                    name="address_number"
                                    class="form-control"
                                    id="address_number"
-                                   value="{{ (isset($user)) ? $address[1] : '' }}">
+                                   {{--I dont why, but the ternary operator wasnt working here, so I had to use an if..else stement--}}
+                                    @if(old('address_number'))
+                                        value="{{old('address_number')}}">
+                                    @else
+                                        value="{{ (isset($user)) ? $address[1] : '' }}">
+                                    @endif
                         </div>
                         <div class="form-group col-md-4 col-xs-8">
                             @php
@@ -179,7 +207,12 @@
                             <label for="address_uf">Estado</label>
                             <select class="custom-select" name="address_uf" id="address_uf">
                                 @foreach($estados as $sigla => $estado)
-                                    <option value="{{ $sigla }}" {{ (isset($user) && $sigla == $user->uf) ? 'selected' : '' }}>
+                                    {{--I dont why, but the ternary operator wasnt working here, so I had to use an if..else stement--}}
+                                    @if(old('address_uf') == $sigla)
+                                        <option value="{{$sigla}}" selected>
+                                    @else
+                                        <option value="{{ $sigla }}" {{ (isset($user) && $sigla == $user->uf) ? 'selected' : '' }}>
+                                    @endif
                                         {{$estado}}
                                     </option>
                                 @endforeach
@@ -191,7 +224,7 @@
                                    name="address_city"
                                    class="form-control"
                                    id="address_city"
-                                   value="{{ $user->city ?? '' }}">
+                                   value="{{ (old('city') ? old('city') : ($user->city ?? '')) }}">
                         </div>
                     </div><!-- End Form-Row Second Line Address -->
 
