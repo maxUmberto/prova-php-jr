@@ -4,9 +4,7 @@
     function confirmDel(event){
         event.preventDefault();
 
-        // console.log('clicou');
         let token = doc.getElementsByName('_token')[0].value;
-        // console.log(token);
         let ajax = new XMLHttpRequest();
         ajax.open('DELETE', event.target.href);
         ajax.setRequestHeader('X-CSRF-TOKEN', token);
