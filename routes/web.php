@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/', function (){
+    return redirect('/users');
+});
 Route::get('/users/search', 'UserController@search');
 Route::resource('/users', 'UserController');
